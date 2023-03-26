@@ -32,11 +32,13 @@
                 echo "IMAGINE_PATH=${{ github.workspace }}/imagine" >> $GITHUB_ENV
                 echo "IMAGINE_SDK_PATH=${{ github.workspace }}/imagine-sdk" >> $GITHUB_ENV
 
-            - name: Build environment
+            - name: Bundled libraries
               run: |
                 cd $IMAGINE_PATH/bundle/all/src/libarchive && make -f linux-x86_64.mk install V=1 -j2 CC=gcc-12 CXX=g++-12
                 cd $IMAGINE_PATH/bundle/all/src/flac && make -f ../../make/linux-x86_64.mk install V=1 -j2 CC=gcc-12 CXX=g++-12
-                cd ${{ github.workspace }}
+                
+            - name: Build environment
+              run: |
                 make -f $IMAGINE_PATH/linux-x86_64-release.mk install V=1 -j2 CC=gcc-12 CXX=g++-12
                 make -f $EMUFRAMEWORK_PATH/linux-x86_64-release.mk config -j2 CC=gcc-12 CXX=g++-12
                 make -f $EMUFRAMEWORK_PATH/linux-x86_64-release.mk install V=1 -j2 CC=gcc-12 CXX=g++-12
