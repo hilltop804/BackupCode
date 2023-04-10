@@ -19,8 +19,8 @@ modules:
       - install -D ngpemu /app/bin/ngpemu
     sources:
       - type: file
-        path: ../NGP.emu/target/linux/ngpemu
+        path: ${GITHUB_WORKSPACE}/NGP.emu/target/linux/ngpemu
       - type: directory
-        path: ../EmuFramework/res/shaders
+        path: ${GITHUB_WORKSPACE}/EmuFramework/res/shaders
       - type: file
-        path: ../EmuFramework/res/ui/ui.png        
+        path: ${GITHUB_WORKSPACE}/EmuFramework/res/ui/ui.png        

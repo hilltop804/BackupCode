@@ -19,8 +19,8 @@ modules:
       - install -D neoemu /app/bin/neoemu
     sources:
       - type: file
-        path: ../NEO.emu/target/linux/neoemu
+        path: ${GITHUB_WORKSPACE}/NEO.emu/target/linux/neoemu
       - type: directory
-        path: ../EmuFramework/res/shaders
+        path: ${GITHUB_WORKSPACE}/EmuFramework/res/shaders
       - type: file
-        path: ../EmuFramework/res/ui/ui.png        
+        path: ${GITHUB_WORKSPACE}/EmuFramework/res/ui/ui.png        

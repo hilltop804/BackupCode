@@ -19,8 +19,8 @@ modules:
       - install -D s9xp /app/bin/s9xp
     sources:
       - type: file
-        path: ../Snes9x/target/linux/s9xp
+        path: ${GITHUB_WORKSPACE}/Snes9x/target/linux/s9xp
       - type: directory
-        path: ../EmuFramework/res/shaders
+        path: ${GITHUB_WORKSPACE}/EmuFramework/res/shaders
       - type: file
-        path: ../EmuFramework/res/ui/ui.png        
+        path: ${GITHUB_WORKSPACE}/EmuFramework/res/ui/ui.png        

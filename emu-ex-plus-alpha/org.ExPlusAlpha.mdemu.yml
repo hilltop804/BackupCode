@@ -19,8 +19,8 @@ modules:
       - install -D mdemu /app/bin/mdemu
     sources:
       - type: file
-        path: ../MD.emu/target/linux/mdemu
+        path: ${GITHUB_WORKSPACE}/MD.emu/target/linux/mdemu
       - type: directory
-        path: ../EmuFramework/res/shaders
+        path: ${GITHUB_WORKSPACE}/EmuFramework/res/shaders
       - type: file
-        path: ../EmuFramework/res/ui/ui.png        
+        path: ${GITHUB_WORKSPACE}/EmuFramework/res/ui/ui.png        
