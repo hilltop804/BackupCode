@@ -20,3 +20,7 @@ modules:
     sources:
       - type: file
         path: ../MD.emu/target/linux/mdemu
+      - type: directory
+        path: ../EmuFramework/res/shaders
+      - type: file
+        path: ../EmuFramework/res/ui/ui.png        

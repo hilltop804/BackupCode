@@ -180,6 +180,8 @@ jobs:
       run: |        
         #mkdir EX-Emulators/Entries
         #mkdir EX-Emulators/Icons
+        cp -r EmuFramework/res/shaders EX-Emulators/linux
+        cp EmuFramework/res/ui/ui.png EX-Emulators/linux
         cp helper/emu-ex-plus-alpha/Bundle/install.sh EX-Emulators/repo
         cp -r helper/emu-ex-plus-alpha/Bundle/Entries EX-Emulators/Entries
         cp -r helper/emu-ex-plus-alpha/Bundle/Icons EX-Emulators/Icons

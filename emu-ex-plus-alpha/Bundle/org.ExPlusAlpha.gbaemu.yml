@@ -20,3 +20,7 @@ modules:
     sources:
       - type: file
         path: ../GBA.emu/target/linux/gbaemu
+      - type: directory
+        path: ../EmuFramework/res/shaders
+      - type: file
+        path: ../EmuFramework/res/ui/ui.png

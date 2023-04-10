@@ -20,3 +20,7 @@ modules:
     sources:
       - type: file
         path: ../Snes9x/target/linux/s9xp
+      - type: directory
+        path: ../EmuFramework/res/shaders
+      - type: file
+        path: ../EmuFramework/res/ui/ui.png        
