@@ -20,7 +20,7 @@ modules:
     sources:
       - type: file
         path: ../../NEO.emu/target/linux/neoemu
-      - type: directory
+      - type: dir
         path: ../../EmuFramework/res/shaders
       - type: file
         path: ../../EmuFramework/res/ui/ui.png        

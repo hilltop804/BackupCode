@@ -20,7 +20,7 @@ modules:
     sources:
       - type: file
         path: ../../NES.emu/target/linux/nesemu
-      - type: directory
+      - type: dir
         path: ../../EmuFramework/res/shaders
       - type: file
         path: ../../EmuFramework/res/ui/ui.png        
