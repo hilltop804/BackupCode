@@ -19,8 +19,8 @@ modules:
       - install -D gbaemu /app/bin/gbaemu
     sources:
       - type: file
-        path: ${GITHUB_WORKSPACE}/GBA.emu/target/linux/gbaemu
+        path: ../../GBA.emu/target/linux/gbaemu
       - type: directory
-        path: ${GITHUB_WORKSPACE}/EmuFramework/res/shaders
+        path: ../../EmuFramework/res/shaders
       - type: file
-        path: ${GITHUB_WORKSPACE}/EmuFramework/res/ui/ui.png
+        path: ../../EmuFramework/res/ui/ui.png

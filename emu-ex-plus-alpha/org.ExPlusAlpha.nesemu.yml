@@ -19,8 +19,8 @@ modules:
       - install -D nesemu /app/bin/nesemu
     sources:
       - type: file
-        path: ${GITHUB_WORKSPACE}/NES.emu/target/linux/nesemu
+        path: ../../NES.emu/target/linux/nesemu
       - type: directory
-        path: ${GITHUB_WORKSPACE}/EmuFramework/res/shaders
+        path: ../../EmuFramework/res/shaders
       - type: file
-        path: ${GITHUB_WORKSPACE}/EmuFramework/res/ui/ui.png        
+        path: ../../EmuFramework/res/ui/ui.png        
