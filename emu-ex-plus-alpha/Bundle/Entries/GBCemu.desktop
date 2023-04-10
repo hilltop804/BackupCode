@@ -1,0 +1,7 @@
+[Desktop Entry]
+Categories=Game;
+Type=Application
+Exec=/usr/bin/flatpak run --arch=x86_64 --command=gbcemu org.ExPlusAlpha.gbcemu
+Name=GBCemu
+Terminal=False
+Icon=/home/deck/.local/share/icons/exemu/gbc.png

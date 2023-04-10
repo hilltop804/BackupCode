@@ -1,0 +1,7 @@
+[Desktop Entry]
+Categories=Game;
+Type=Application
+Exec=/usr/bin/flatpak run --arch=x86_64 --command=ngpemu org.ExPlusAlpha.ngpemu
+Name=NGPemu
+Terminal=False
+Icon=/home/deck/.local/share/icons/exemu/ngp.png

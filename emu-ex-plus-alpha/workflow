@@ -1,0 +1,191 @@
+name: EX Emulators
+
+on: [push, workflow_dispatch]
+
+jobs:
+  build:
+    name: Set up environment
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        image: ["GBA.emu", "GBC.emu", "MD.emu", "NEO.emu", "NES.emu", "NGP.emu", "Snes9x"]
+
+    steps:
+    - name: Checkout current repo
+      uses: actions/checkout@v3
+
+    steps:
+    - name: Checkout helper repo
+      uses: actions/checkout@v3   
+      with:
+        repository: hilltop804/BackupCode   
+        path: './helper'
+
+    - name: Install build dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y clang-15 cmake glibc-source flatpak flatpak-builder
+        sudo apt-get install -y libasound2-dev libbluetooth-dev libboost-dev libdrm-dev libegl-dev
+        sudo apt-get install -y libvorbis-dev libogg-dev
+        sudo apt-get install -y libpulse-dev libxfixes-dev libxi-dev libxrandr-dev
+        sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+        
+    - name: Declare variables
+      run: |
+        mkdir imagine-sdk
+        mkdir EX-Emulators
+        mkdir EX-Emulators/repo        
+        echo "EMUFRAMEWORK_PATH=${{ github.workspace }}/EmuFramework" >> $GITHUB_ENV
+        echo "IMAGINE_PATH=${{ github.workspace }}/imagine" >> $GITHUB_ENV
+        echo "IMAGINE_SDK_PATH=${{ github.workspace }}/imagine-sdk" >> $GITHUB_ENV
+        
+    - name: Build bundled libraries
+      run: |
+        cd $IMAGINE_PATH/bundle/all/src/libarchive && make -f linux-x86_64.mk install V=1 -j4 CC=gcc-12 CXX=g++-12
+        cd $IMAGINE_PATH/bundle/all/src/flac && make -f linux-x86_64.mk install V=1 -j4 CC=gcc-12 CXX=g++-12        
+
+    - name: Build frameworks
+      run: |
+        make -f $IMAGINE_PATH/linux-x86_64-release.mk install V=1 -j4 CC=gcc-12 CXX=g++-12
+        make -f $EMUFRAMEWORK_PATH/linux-x86_64-release.mk config -j4 CC=gcc-12 CXX=g++-12
+        make -f $EMUFRAMEWORK_PATH/linux-x86_64-release.mk install V=1 -j4 CC=gcc-12 CXX=g++-12
+        
+    - name: Build GBA.emu
+      if: ${{ matrix.image == 'GBA.emu' }}
+      run: |        
+        cd $proper
+        make -f linux-x86_64-release.mk V=1 -j4 CC=gcc-12 CXX=g++-12
+        cp target/linux/$lower ../EX-Emulators/linux/$lower
+      env:
+        proper: GBA.emu
+        lower: gbaemu
+        
+    - name: Flatpak GBA.emu
+      if: ${{ matrix.image == 'GBA.emu' }}
+      run: |        
+        flatpak-builder --repo=EX-Emulators/repo/$lower --install-deps-from=flathub --install --force-clean build helper/emu-ex-plus-alpha/org.ExPlusAlpha.$lower.yml
+      env:
+        proper: GBA.emu
+        lower: gbaemu
+        
+    - name: Build GBC.emu
+      if: ${{ matrix.image == 'GBC.emu' }}
+      run: |        
+        cd $proper
+        make -f linux-x86_64-release.mk V=1 -j4 CC=gcc-12 CXX=g++-12
+        cp target/linux/$lower ../EX-Emulators/linux/$lower
+      env:
+        proper: GBC.emu
+        lower: gbcemu
+        
+    - name: Flatpak GBC.emu
+      if: ${{ matrix.image == 'GBC.emu' }}
+      run: |        
+        flatpak-builder --repo=EX-Emulators/repo/$lower --install-deps-from=flathub --install --force-clean build helper/emu-ex-plus-alpha/org.ExPlusAlpha.$lower.yml
+      env:
+        proper: GBC.emu
+        lower: gbcemu
+        
+    - name: Build MD.emu
+      if: ${{ matrix.image == 'MD.emu' }}
+      run: |        
+        cd $proper
+        make -f linux-x86_64-release.mk V=1 -j4 CC=gcc-12 CXX=g++-12
+        cp target/linux/$lower ../EX-Emulators/linux/$lower
+      env:
+        proper: MD.emu
+        lower: mdemu
+        
+    - name: Flatpak MD.emu
+      if: ${{ matrix.image == 'MD.emu' }}
+      run: |        
+        flatpak-builder --repo=EX-Emulators/repo/$lower --install-deps-from=flathub --install --force-clean build helper/emu-ex-plus-alpha/org.ExPlusAlpha.$lower.yml
+      env:
+        proper: MD.emu
+        lower: mdemu
+        
+    - name: Build NEO.emu
+      if: ${{ matrix.image == 'NEO.emu' }}
+      run: |        
+        cd $proper
+        make -f linux-x86_64-release.mk V=1 -j4 CC=gcc-12 CXX=g++-12
+        cp target/linux/$lower ../EX-Emulators/linux/$lower
+      env:
+        proper: NEO.emu
+        lower: neoemu
+        
+    - name: Flatpak NEO.emu
+      if: ${{ matrix.image == 'NEO.emu' }}
+      run: |        
+        flatpak-builder --repo=EX-Emulators/repo/$lower --install-deps-from=flathub --install --force-clean build helper/emu-ex-plus-alpha/org.ExPlusAlpha.$lower.yml
+      env:
+        proper: NEO.emu
+        lower: neoemu
+        
+    - name: Build NES.emu
+      if: ${{ matrix.image == 'NES.emu' }}
+      run: |        
+        cd $proper
+        make -f linux-x86_64-release.mk V=1 -j4 CC=gcc-12 CXX=g++-12
+        cp target/linux/$lower ../EX-Emulators/linux/$lower
+      env:
+        proper: NES.emu
+        lower: nesemu
+        
+    - name: Flatpak NES.emu
+      if: ${{ matrix.image == 'NES.emu' }}
+      run: |        
+        flatpak-builder --repo=EX-Emulators/repo/$lower --install-deps-from=flathub --install --force-clean build helper/emu-ex-plus-alpha/org.ExPlusAlpha.$lower.yml
+      env:
+        proper: NES.emu
+        lower: nesemu
+        
+    - name: Build NGP.emu
+      if: ${{ matrix.image == 'NGP.emu' }}
+      run: |        
+        cd $proper
+        make -f linux-x86_64-release.mk V=1 -j4 CC=gcc-12 CXX=g++-12
+        cp target/linux/$lower ../EX-Emulators/linux/$lower
+      env:
+        proper: NGP.emu
+        lower: ngpemu
+        
+    - name: Flatpak NGP.emu
+      if: ${{ matrix.image == 'NGP.emu' }}
+      run: |        
+        flatpak-builder --repo=EX-Emulators/repo/$lower --install-deps-from=flathub --install --force-clean build helper/emu-ex-plus-alpha/org.ExPlusAlpha.$lower.yml
+      env:
+        proper: NGP.emu
+        lower: ngpemu
+        
+    - name: Build Snes9x
+      if: ${{ matrix.image == 'Snes9x' }}
+      run: |        
+        cd $proper
+        make -f linux-x86_64-release.mk V=1 -j4 CC=gcc-12 CXX=g++-12
+        cp target/linux/$lower ../EX-Emulators/linux/$lower
+      env:
+        proper: Snes9x
+        lower: s9xp
+        
+    - name: Flatpak Snes9x
+      if: ${{ matrix.image == 'Snes9x' }}
+      run: |        
+        flatpak-builder --repo=EX-Emulators/repo/$lower --install-deps-from=flathub --install --force-clean build helper/emu-ex-plus-alpha/org.ExPlusAlpha.$lower.yml
+      env:
+        proper: Snes9x
+        lower: s9xp
+        
+    - name: Add bundled files
+      run: |        
+        #mkdir EX-Emulators/Entries
+        #mkdir EX-Emulators/Icons
+        cp helper/emu-ex-plus-alpha/Bundle/install.sh EX-Emulators/repo
+        cp -r helper/emu-ex-plus-alpha/Bundle/Entries EX-Emulators/Entries
+        cp -r helper/emu-ex-plus-alpha/Bundle/Icons EX-Emulators/Icons
+        
+    - name: Upload EX-Emulators artifacts
+      uses: actions/upload-artifact@v3
+      with: 
+        name: EX-Emulators
+        path: EX-Emulators/
