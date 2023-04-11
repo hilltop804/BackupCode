@@ -17,10 +17,11 @@ modules:
     buildsystem: simple
     build-commands:
       - install -D mdemu /app/bin/mdemu
+      - install -D ui.png /app/bin/mdemu
     sources:
       - type: file
         path: ../../MD.emu/target/linux/mdemu
       - type: dir
         path: ../../EmuFramework/res/shaders
       - type: file
-        path: ../../EmuFramework/res/ui/ui.png        
+        path: ../../EmuFramework/res/ui/ui.png

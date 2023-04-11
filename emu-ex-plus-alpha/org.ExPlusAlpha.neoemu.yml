@@ -17,10 +17,11 @@ modules:
     buildsystem: simple
     build-commands:
       - install -D neoemu /app/bin/neoemu
+      - install -D ui.png /app/bin/neoemu
     sources:
       - type: file
         path: ../../NEO.emu/target/linux/neoemu
       - type: dir
         path: ../../EmuFramework/res/shaders
       - type: file
-        path: ../../EmuFramework/res/ui/ui.png        
+        path: ../../EmuFramework/res/ui/ui.png

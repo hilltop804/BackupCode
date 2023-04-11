@@ -17,12 +17,11 @@ modules:
     buildsystem: simple
     build-commands:
       - install -D gbaemu /app/bin/gbaemu
+      - install -D ui.png /app/bin/gbaemu
     sources:
       - type: file
         path: ../../GBA.emu/target/linux/gbaemu
       - type: dir
         path: ../../EmuFramework/res/shaders
-        dest: ${FLATPAK_DEST}/app/bin/shaders
       - type: file
         path: ../../EmuFramework/res/ui/ui.png
-        dest: ${FLATPAK_DEST}/app/bin

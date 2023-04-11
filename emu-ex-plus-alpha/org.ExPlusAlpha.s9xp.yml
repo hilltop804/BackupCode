@@ -17,10 +17,11 @@ modules:
     buildsystem: simple
     build-commands:
       - install -D s9xp /app/bin/s9xp
+      - install -D ui.png /app/bin/s9xp
     sources:
       - type: file
         path: ../../Snes9x/target/linux/s9xp
       - type: dir
         path: ../../EmuFramework/res/shaders
       - type: file
-        path: ../../EmuFramework/res/ui/ui.png        
+        path: ../../EmuFramework/res/ui/ui.png

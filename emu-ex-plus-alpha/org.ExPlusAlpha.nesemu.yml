@@ -17,10 +17,11 @@ modules:
     buildsystem: simple
     build-commands:
       - install -D nesemu /app/bin/nesemu
+      - install -D ui.png /app/bin/nesemu
     sources:
       - type: file
         path: ../../NES.emu/target/linux/nesemu
       - type: dir
         path: ../../EmuFramework/res/shaders
       - type: file
-        path: ../../EmuFramework/res/ui/ui.png        
+        path: ../../EmuFramework/res/ui/ui.png
