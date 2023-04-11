@@ -16,7 +16,7 @@ modules:
   - name: GBCemu
     buildsystem: simple
     build-commands:
-      - install -D gbcemu /app/bin
+      - install -D gbcemu /app/bin/gbcemu
     sources:
       - type: file
         path: ../../GBC.emu/target/linux/gbcemu
