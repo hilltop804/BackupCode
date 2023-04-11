@@ -17,13 +17,13 @@ modules:
     buildsystem: simple
     build-commands:
       - install -D gbcemu /app/bin
-      - mkdir /home/deck
-      - cp ui.png /home/deck
-      - cp ls
+      - mkdir home/deck/shaders
     sources:
       - type: file
         path: ../../GBC.emu/target/linux/gbcemu
       - type: dir
         path: ../../EmuFramework/res/shaders
+        dest: home/deck/shaders
       - type: file
-        path: ../../EmuFramework/res/ui/ui.png        
+        path: ../../EmuFramework/res/ui/ui.png
+        dest: home/deck
