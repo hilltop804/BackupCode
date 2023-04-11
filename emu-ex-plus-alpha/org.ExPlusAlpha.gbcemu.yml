@@ -22,7 +22,7 @@ modules:
         path: ../../GBC.emu/target/linux/gbcemu
       - type: dir
         path: ../../EmuFramework/res/shaders
-        dest: home/deck/shaders
+        dest: /home/deck/shaders
       - type: file
         path: ../../EmuFramework/res/ui/ui.png
-        dest: home/deck
+        dest: /home/deck
