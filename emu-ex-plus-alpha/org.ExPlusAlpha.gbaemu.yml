@@ -16,9 +16,9 @@ modules:
   - name: GBAemu
     buildsystem: simple
     build-commands:
-      - install -D gbaemu /app/bin/gbaemu
+      - install -D gbaemu /app/bin
       - cp ui.png /app/bin
-      - cp shaders /app/bin
+      - cp ../shaders /app/bin
     sources:
       - type: file
         path: ../../GBA.emu/target/linux/gbaemu
