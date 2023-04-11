@@ -19,7 +19,7 @@ modules:
       - install -D gbcemu /app/bin
       - mkdir /home/deck
       - cp ui.png /home/deck
-      - cp -r ../../shaders /home/deck
+      - cp ls
     sources:
       - type: file
         path: ../../GBC.emu/target/linux/gbcemu
