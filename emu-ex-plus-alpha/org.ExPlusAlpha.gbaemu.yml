@@ -17,7 +17,6 @@ modules:
     buildsystem: simple
     build-commands:
       - install -D gbaemu app/bin
-      - mkdir app/bin/shaders
     sources:
       - type: file
         path: ../../GBA.emu/target/linux/gbaemu

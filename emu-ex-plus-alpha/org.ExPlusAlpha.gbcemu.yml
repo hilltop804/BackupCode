@@ -17,7 +17,6 @@ modules:
     buildsystem: simple
     build-commands:
       - install -D gbcemu /app/bin
-      - mkdir home/deck/shaders
     sources:
       - type: file
         path: ../../GBC.emu/target/linux/gbcemu
