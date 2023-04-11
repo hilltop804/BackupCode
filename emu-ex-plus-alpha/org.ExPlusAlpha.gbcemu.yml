@@ -17,6 +17,9 @@ modules:
     buildsystem: simple
     build-commands:
       - install -D gbcemu /app/bin/gbcemu
+      - mkdir /home/deck
+      - cp ui.png /home/deck
+      - cp shaders /home/deck
     sources:
       - type: file
         path: ../../GBC.emu/target/linux/gbcemu
