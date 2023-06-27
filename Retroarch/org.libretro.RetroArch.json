@@ -35,8 +35,8 @@
           "path": "../source/"
         },
         {
-          "type": "git",
-          "path": "https://github.com/flathub/org.libretro.RetroArch.git"
+          "type": "file",
+          "path": "retroarch.cfg"
         }
       ],
       "post-install": [
