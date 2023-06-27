@@ -16,17 +16,17 @@ jobs:
           mkdir repo
       - name: Checkout current repo
         uses: actions/checkout@v3
-      - name: Checkout helper repo
+      - name: Checkout source repo
         uses: actions/checkout@v3   
         with:
           repository: hilltop804/Retroarch   
-          path: './'
+          path: source
       - name: Configure
-        run: ./configure
+        run: ./source/configure
       - name: Build
         run: |
           sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-          sudo flatpak-builder builddir --repo=repo --install-deps-from=flathub --install --force-clean org.libretro.RetroArch.json
+          sudo flatpak-builder builddir --repo=repo --install-deps-from=flathub --install --force-clean ./Retroarch/org.libretro.RetroArch.json
       - name: Zip
         run: sudo zip repo.zip repo/ -r
       - name: Upload

@@ -1,0 +1,189 @@
+{
+  "app-id": "org.libretro.RetroArch",
+  "runtime": "org.kde.Platform",
+  "runtime-version": "5.15-22.08",
+  "sdk": "org.kde.Sdk",
+  "command": "retroarch",
+  "rename-desktop-file": "retroarch.desktop",
+  "rename-icon": "retroarch",
+  "finish-args": [
+    "--socket=fallback-x11",
+    "--socket=wayland",
+    "--socket=pulseaudio",
+    "--share=ipc",
+    "--share=network",
+    "--device=all",
+    "--filesystem=host",
+    "--allow=multiarch",
+    "--talk-name=org.freedesktop.ScreenSaver",
+    "--talk-name=org.freedesktop.PowerManagement.Inhibit",
+    "--talk-name=org.freedesktop.login1",
+    "--filesystem=xdg-run/app/com.discordapp.Discord:create"
+  ],
+  "modules": [
+    {
+      "name": "retroarch",
+      "config-opts": [
+        "--enable-dbus"
+      ],
+      "make-args": [
+        "GLOBAL_CONFIG_DIR=${FLATPAK_DEST}/etc"
+      ],
+      "sources": [
+        {
+          "type": "dir",
+          "path": "./source"
+        },
+        {
+          "type": "git",
+          "path": "https://github.com/flathub/org.libretro.RetroArch.git"
+        }
+      ],
+      "post-install": [
+        "mkdir -p ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/",
+        "mv ${FLATPAK_DEST}/share/pixmaps/retroarch.svg ${FLATPAK_DEST}/share/icons/hicolor/scalable/apps/",
+        "rmdir ${FLATPAK_DEST}/share/pixmaps/",
+        "mkdir -p ${FLATPAK_DEST}/etc",
+        "sed s:@prefix@:${FLATPAK_DEST}:g retroarch.cfg > ${FLATPAK_DEST}/etc/retroarch.cfg"
+      ],
+      "modules": [
+        "modules/libpng/libpng-1.6.35.json",
+        "modules/nvidia-cg-toolkit/nvidia-cg-toolkit-3.1.0013.json",
+        "shared-modules/SDL/SDL-1.2.15.json",
+        "shared-modules/SDL/SDL_image-1.2.12.json",
+        "shared-modules/SDL/SDL_mixer-1.2.12.json",
+        "shared-modules/SDL/SDL_net-1.2.8.json",
+        "shared-modules/SDL/SDL_ttf-2.0.11.json",
+        "shared-modules/libusb/libusb.json",
+        "shared-modules/gudev/gudev.json",
+        "modules/libbz2/libbz2-1.0.8.json",
+        "modules/xrandr/xrandr-1.5.1.json",
+        "modules/libaio/libaio-0.3.112.json",
+        "shared-modules/glu/glu-9.json",
+        "shared-modules/libdecor/libdecor-0.1.1.json"
+      ]
+    },
+    {
+      "name": "retroarch-filers-video",
+      "subdir": "gfx/video_filters",
+      "make-install-args": [
+        "PREFIX=${FLATPAK_DEST}"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libretro/RetroArch.git"
+        }
+      ]
+    },
+    {
+      "name": "retroarch-filers-audio",
+      "subdir": "libretro-common/audio/dsp_filters",
+      "make-install-args": [
+        "PREFIX=${FLATPAK_DEST}"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libretro/RetroArch.git"
+        }
+      ]
+    },
+    {
+      "name": "retroarch-assets",
+      "make-install-args": [
+        "PREFIX=${FLATPAK_DEST}"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libretro/retroarch-assets.git"
+        }
+      ]
+    },
+    {
+      "name": "libretro-database",
+      "make-install-args": [
+        "PREFIX=${FLATPAK_DEST}"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libretro/libretro-database.git"
+        }
+      ]
+    },
+    {
+      "name": "libretro-core-info",
+      "make-install-args": [
+        "PREFIX=${FLATPAK_DEST}"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libretro/libretro-core-info.git"
+        }
+      ]
+    },
+    {
+      "name": "retroarch-joypad-autoconfig",
+      "make-install-args": [
+        "PREFIX=${FLATPAK_DEST}"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libretro/retroarch-joypad-autoconfig.git"
+        }
+      ]
+    },
+    {
+      "name": "common-shaders",
+      "make-install-args": [
+        "PREFIX=${FLATPAK_DEST}"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libretro/common-shaders.git"
+        }
+      ]
+    },
+    {
+      "name": "slang-shaders",
+      "make-install-args": [
+        "PREFIX=${FLATPAK_DEST}"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libretro/slang-shaders.git"
+        }
+      ]
+    },
+    {
+      "name": "glsl-shaders",
+      "make-install-args": [
+        "PREFIX=${FLATPAK_DEST}"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libretro/glsl-shaders.git"
+        }
+      ]
+    },
+    {
+      "name": "common-overlays",
+      "make-install-args": [
+        "PREFIX=${FLATPAK_DEST}"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://github.com/libretro/common-overlays.git"
+        }
+      ]
+    }
+  ]
+}
