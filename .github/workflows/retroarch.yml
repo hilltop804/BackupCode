@@ -22,7 +22,9 @@ jobs:
           repository: hilltop804/Retroarch   
           path: source
       - name: Configure
-        run: ./source/configure
+        run: |
+          cd ./source
+          ./configure
       - name: Build
         run: |
           sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
