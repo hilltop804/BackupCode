@@ -6,7 +6,7 @@ permissions:
   contents: read
 
 jobs:
-  linux: # Smoketest build using most restrictive compiler and default options
+  Flatpak: # Smoketest build using most restrictive compiler and default options
     runs-on: ubuntu-latest
     steps:
       - name: Install build dependencies
